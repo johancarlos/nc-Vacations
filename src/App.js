@@ -9,6 +9,7 @@ import config from './Config';
 import { UserAgentApplication } from 'msal';
 import { getUserDetails } from './GraphService';
 import RequestList from './Components/RequestList';
+import { Link } from "react-router-dom";
 
 
 
@@ -100,6 +101,7 @@ async getUserProfile() {
     if (this.state.error) {
       error = <ErrorMessage message={this.state.error.message} debug={this.state.error.debug} />;
     }
+
     return (
       <Router>
         <div>
@@ -116,16 +118,31 @@ user={this.state.user}/>
                 user={this.state.user}
                 authButtonMethod={this.login.bind(this)} />
                             } />
-            <Route exact path="/list" component={RequestList} />
+
+            <Route exact path="/list"
+                render={(props) =>
+                  <RequestList
+                  isAuthenticated={this.state.isAuthenticated}
+                  user={this.state.user}/>
+                }/>
+                <Route
+                        exact
+                        path="/list"
+                        render={() =><RequestList/>}
+                      />
+
+
           </Container>
         </div>
       </Router>
     );
   }
+
   setErrorMessage(message, debug) {
     this.setState({
       error: {message: message, debug: debug}
     });
   }
 }
+
 export default App;

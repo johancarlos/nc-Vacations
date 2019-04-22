@@ -11,7 +11,6 @@ class RequestList extends Component{
       events: []
     };
   }
-
   render(){
     return(
       <div>
