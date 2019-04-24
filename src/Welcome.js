@@ -1,6 +1,7 @@
 import React from 'react';
-import Form from './Components/Form';
-
+import RequestForm from './Components/RequestForm';
+import { Form, Input } from 'semantic-ui-react'
+import Calendar from './Components/Calendar';
 import {
   Button,
   Jumbotron } from 'reactstrap';
@@ -12,15 +13,25 @@ function WelcomeContent(props) {
     return (
       <div>
         <h4>Welcome {props.user.displayName}!</h4>
-        <Form/>
       </div>
-
     );
   }
 
   // Not authenticated, present a sign in button
   return <Button color="primary" onClick={props.authButtonMethod}>Click here to sign in</Button>;
 }
+
+function FormContent(props) {
+  if (props.isAuthenticated) {
+    return (
+      <div>
+        <input defaultValue={props.user.displayName}/>
+      </div>
+    );
+  }
+  return <input defaultValue={props.user.displayName}/>;
+}
+
 
 export default class Welcome extends React.Component {
   render() {
@@ -31,8 +42,25 @@ export default class Welcome extends React.Component {
           isAuthenticated={this.props.isAuthenticated}
           user={this.props.user}
           authButtonMethod={this.props.authButtonMethod} />
+          <Form>
+            <Form.Field>
+              <h4>Nombre:</h4>
+              </Form.Field>
+              <FormContent isAuthenticated={this.props.isAuthenticated}
+              user={this.props.user}
+              authButtonMethod={this.props.authButtonMethod}/>
+            <Form.Field required>
+              <h4>Descripcion:</h4>
+              <input type="text"  />
+            </Form.Field>
+            <Form.Field>
+              <h4>Seleccionar Fecha: </h4>
+              <Calendar/>
+            </Form.Field>
+            <Form.Button content='Submit' />
+          </Form>
+          <RequestForm/>
       </Jumbotron>
-
     );
   }
 }

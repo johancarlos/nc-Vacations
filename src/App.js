@@ -9,7 +9,6 @@ import config from './Config';
 import { UserAgentApplication } from 'msal';
 import { getUserDetails } from './GraphService';
 import RequestList from './Components/RequestList';
-import { Link } from "react-router-dom";
 
 
 
@@ -130,7 +129,6 @@ user={this.state.user}/>
                         path="/list"
                         render={() =><RequestList/>}
                       />
-
 
           </Container>
         </div>
