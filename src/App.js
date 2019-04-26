@@ -9,6 +9,7 @@ import config from './Config';
 import { UserAgentApplication } from 'msal';
 import { getUserDetails } from './GraphService';
 import RequestList from './Components/RequestList';
+import Footer from './Footer';
 
 
 
@@ -94,13 +95,11 @@ async getUserProfile() {
     });
   }
 }
-
   render() {
     let error = null;
     if (this.state.error) {
       error = <ErrorMessage message={this.state.error.message} debug={this.state.error.debug} />;
     }
-
     return (
       <Router>
         <div>
@@ -129,13 +128,12 @@ user={this.state.user}/>
                         path="/list"
                         render={() =><RequestList/>}
                       />
-
           </Container>
+          <Footer/>
         </div>
       </Router>
     );
   }
-
   setErrorMessage(message, debug) {
     this.setState({
       error: {message: message, debug: debug}

@@ -3,6 +3,14 @@ import { Form } from 'semantic-ui-react'
 import Calendar from './Calendar';
 
 class RequestForm extends Component {
+  constructor(props){
+
+  }
+  state={
+      description:'',
+      date:false
+  }
+
   render(){
     return(
       <div>
@@ -21,7 +29,25 @@ class RequestForm extends Component {
               <h4>Seleccionar Fecha: </h4>
               <Calendar/>
             </Form.Field>
-            <Form.Button content='Submit' />
+
+            <Form.Input
+              label="descripcion"
+              name="descripcion"
+              value={this.state.description}
+              onchange={this.onInputChange}
+              error={this.state.emailError}
+              />
+
+
+
+
+            <Form.Button content='Submit'
+            fluid
+            color="blue"
+            type="submit"
+            disable={!this.state.description
+            || !this.state.date
+          }/>
           </Form>
           </div>
       </div>

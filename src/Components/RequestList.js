@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Table } from 'semantic-ui-react';
-import config from '../Config';
-import { getEvents } from '../GraphService';
+
 
 class RequestList extends Component{
   constructor(props) {

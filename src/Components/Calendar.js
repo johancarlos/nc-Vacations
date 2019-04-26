@@ -1,5 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import { Form } from 'semantic-ui-react'
+
 import DayPicker, { DateUtils } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
@@ -40,9 +42,9 @@ export default class Calendar extends React.Component {
                 ${to.toLocaleDateString()}`}{' '}
           {from &&
             to && (
-              <button className="link" onClick={this.handleResetClick}>
+              <Form.Button basic color='blue' size='mini' onClick={this.handleResetClick}>
                 Reset
-              </button>
+              </Form.Button>
             )}
         </p>
         <DayPicker
@@ -55,8 +57,8 @@ export default class Calendar extends React.Component {
         <Helmet>
           <style>{`
   .Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
-    background-color: #f0f8ff !important;
-    color: #4a90e2;
+    background-color: #68D4A3 !important;
+    color: #003B04;
   }
   .Selectable .DayPicker-Day {
     border-radius: 0 !important;

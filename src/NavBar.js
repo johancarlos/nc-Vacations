@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink as RouterNavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Container,
@@ -14,6 +15,7 @@ import {
   DropdownMenu,
   DropdownItem } from 'reactstrap';
 import '@fortawesome/fontawesome-free/css/all.css';
+import logo from './Images/logo.png';
 
 function UserAvatar(props) {
   // If a user avatar is available, return an img tag with the pic
@@ -23,7 +25,6 @@ function UserAvatar(props) {
             className="rounded-circle align-self-center mr-2"
             style={{width: '32px'}}></img>;
   }
-
   // No avatar available, return a default icon
   return <i
           className="far fa-user-circle fa-lg rounded-circle align-self-center mr-2"
@@ -88,7 +89,11 @@ export default class NavBar extends React.Component {
       <div>
         <Navbar color="dark" dark expand="md" fixed="top">
           <Container>
-            <NavbarBrand href="/">NearShoreCode Vacations</NavbarBrand>
+            <NavbarBrand>
+            <Link to="/" >
+              <img src={logo} width={160} alt="My logo" />
+          </Link>
+            </NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="mr-auto" navbar>
