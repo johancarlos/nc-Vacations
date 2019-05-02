@@ -11,23 +11,68 @@ function WelcomeContent(props) {
   if (props.isAuthenticated) {
     return (
       <div>
-        <h3>Welcome {props.user.displayName}!</h3>
+        <h3 style={{paddingTop:40}}>Welcome {props.user.displayName}!</h3>
+        <h2>Solicitud Vacacion</h2>
       </div>
     );
   }
   // Not authenticated, present a sign in button
-  return <Button color="primary" onClick={props.authButtonMethod}>Click here to sign in</Button>;
+  return (
+    <div>
+      <h1 style={{paddingTop:40}}>NearshoreCode Vacations Form</h1>
+      <div>
+        <h4 style={{paddingBottom:20}}>Please login to continue:</h4>
+        <Button color="primary" onClick={props.authButtonMethod}>Click here to sign in</Button>
+      </div>
+    </div>
+  );
 }
 
 function NameContent(props) {
   if (props.isAuthenticated) {
     return (
       <div>
+      <label>Nombre:</label>
         <input defaultValue={props.user.displayName} readOnly="readOnly" />
       </div>
     );
   }
-  return <input defaultValue={props.user.displayName}/>;
+  return  <p ></p>;
+}
+
+function DescriptionContent(props) {
+  if (props.isAuthenticated) {
+    return (
+      <div>
+      <Form.Input required={true} label='Descripcion' placeholder="Desc" />
+      </div>
+    );
+  }
+  return  <p ></p>;
+}
+
+function FormSubmit(props) {
+  if (props.isAuthenticated) {
+    return (
+        <Form.Button content='Submit'
+        basic color='green'
+         />
+
+    );
+  }
+  return  <p ></p>;
+}
+
+function CalendarContent(props) {
+  if (props.isAuthenticated) {
+    return (
+      <div>
+        <label>Seleccionar Fecha: </label>
+        <Calendar/>
+      </div>
+    );
+  }
+  return  <p></p>;
 }
 
 function NameText(props) {
@@ -104,44 +149,39 @@ class Welcome extends Component {
     }else{
       this.setState({formError:false})
     }
-
     console.log(this.state);
-
   }
-
 
   render() {
     return (
       <Jumbotron>
-        <h1>NearshoreCode Vacations Form</h1>
         <WelcomeContent
           isAuthenticated={this.props.isAuthenticated}
           user={this.props.user}
           authButtonMethod={this.props.authButtonMethod} />
           <div>
           <br/>
-            <h2>Solicitud Vacacion</h2>
             {!this.state.complete ?
               <Form error={this.state.formError}>
                 <Form.Field>
-                  <label>Nombre:</label>
                   <NameContent isAuthenticated={this.props.isAuthenticated}
                   user={this.props.user}
                   authButtonMethod={this.props.authButtonMethod}/>
                 </Form.Field>
                 <Form.Field>
-                  <Form.Input required={true} onChange={(e) => this.setState({description: e.target.value})} label='Descripcion' placeholder="Desc" error={this.state.descriptionError}/>
+                  <DescriptionContent isAuthenticated={this.props.isAuthenticated}
+                  user={this.props.user}
+                  authButtonMethod={this.props.authButtonMethod}/>
                 </Form.Field>
                 <Form.Field required>
-                  <label>Seleccionar Fecha: </label>
-                  <Calendar />
-
-
+                  <CalendarContent isAuthenticated={this.props.isAuthenticated}
+                  user={this.props.user}
+                  authButtonMethod={this.props.authButtonMethod}/>
                 </Form.Field>
                 {!this.state.complete ?
-                  <Form.Button content='Submit'
-                  basic color='green'
-                  onClick={this.submitVacationForm} />
+                  <FormSubmit isAuthenticated={this.props.isAuthenticated}
+                  user={this.props.user}
+                  authButtonMethod={this.props.authButtonMethod} onClick={this.submitVacationForm}/>
                 : null }
               </Form>
               :
@@ -150,12 +190,13 @@ class Welcome extends Component {
                 <NameText isAuthenticated={this.props.isAuthenticated}
                 user={this.props.user}
                 authButtonMethod={this.props.authButtonMethod}/>
-                <p> We've received your information and we'll be in touch shortly.</p>
+                <p> We've received your request</p>
               </div>
             }
             </div>
       </Jumbotron>
     );
+
   }
 }
 export default Welcome;
