@@ -1,27 +1,22 @@
 import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react'
+import { Form, Button, Segment, TextArea } from 'semantic-ui-react'
 import Calendar from './Form/Calendar';
-import {
-  Button,
-  Jumbotron } from 'reactstrap';
-
 
 function WelcomeContent(props) {
   // If authenticated, greet the user
   if (props.isAuthenticated) {
     return (
       <div>
-        <h3 style={{paddingTop:40}}>Welcome {props.user.displayName}!</h3>
-        <h2>Solicitud Vacacion</h2>
+        <h3 style={{paddingTop:80}}>Welcome {props.user.displayName}!</h3>
+        <h2 style={{textAlign:'center'}}>Solicitud Vacacion</h2>
       </div>
     );
   }
   // Not authenticated, present a sign in button
   return (
     <div>
-      <h1 style={{paddingTop:40}}>NearshoreCode Vacations Form</h1>
-      <div>
-        <h4 style={{paddingBottom:20}}>Please login to continue:</h4>
+      <h1 style={{paddingTop:100}}>NearshoreCode Vacations Form</h1>
+      <div style={{paddingTop:90}}>
         <Button color="primary" onClick={props.authButtonMethod}>Click here to sign in</Button>
       </div>
     </div>
@@ -44,7 +39,7 @@ function DescriptionContent(props) {
   if (props.isAuthenticated) {
     return (
       <div>
-      <Form.Input required={true} label='Descripcion' placeholder="Desc" />
+      <Form.Field control={TextArea} required={true} label='Descripcion' placeholder="Desc" />
       </div>
     );
   }
@@ -154,7 +149,7 @@ class Welcome extends Component {
 
   render() {
     return (
-      <Jumbotron>
+      <Segment placeholder>
         <WelcomeContent
           isAuthenticated={this.props.isAuthenticated}
           user={this.props.user}
@@ -162,28 +157,31 @@ class Welcome extends Component {
           <div>
           <br/>
             {!this.state.complete ?
-              <Form error={this.state.formError}>
-                <Form.Field>
-                  <NameContent isAuthenticated={this.props.isAuthenticated}
-                  user={this.props.user}
-                  authButtonMethod={this.props.authButtonMethod}/>
-                </Form.Field>
-                <Form.Field>
-                  <DescriptionContent isAuthenticated={this.props.isAuthenticated}
-                  user={this.props.user}
-                  authButtonMethod={this.props.authButtonMethod}/>
-                </Form.Field>
-                <Form.Field required>
-                  <CalendarContent isAuthenticated={this.props.isAuthenticated}
-                  user={this.props.user}
-                  authButtonMethod={this.props.authButtonMethod}/>
-                </Form.Field>
-                {!this.state.complete ?
-                  <FormSubmit isAuthenticated={this.props.isAuthenticated}
-                  user={this.props.user}
-                  authButtonMethod={this.props.authButtonMethod} onClick={this.submitVacationForm}/>
-                : null }
-              </Form>
+
+                <Form error={this.state.formError}>
+                  <Form.Field>
+                    <NameContent isAuthenticated={this.props.isAuthenticated}
+                    user={this.props.user}
+                    authButtonMethod={this.props.authButtonMethod}/>
+                  </Form.Field>
+                  <Form.Field>
+                    <DescriptionContent isAuthenticated={this.props.isAuthenticated}
+                    user={this.props.user}
+                    authButtonMethod={this.props.authButtonMethod}/>
+                  </Form.Field>
+                  <Form.Field required>
+                    <CalendarContent isAuthenticated={this.props.isAuthenticated}
+                    user={this.props.user}
+                    authButtonMethod={this.props.authButtonMethod}/>
+                  </Form.Field>
+                  {!this.state.complete ?
+                    <FormSubmit isAuthenticated={this.props.isAuthenticated}
+                    user={this.props.user}
+                    authButtonMethod={this.props.authButtonMethod} onClick={this.submitVacationForm}/>
+                  : null }
+                </Form>
+
+
               :
               <div >
                 <p>Thanks for your response </p>.
@@ -194,7 +192,7 @@ class Welcome extends Component {
               </div>
             }
             </div>
-      </Jumbotron>
+      </Segment>
     );
 
   }
