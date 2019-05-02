@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Container } from 'reactstrap';
-import NavBar from './NavBar';
-import ErrorMessage from './ErrorMessage';
-import Welcome from './Welcome';
+import NavBar from './Components/Navigation/NavBar';
+import ErrorMessage from './Components/MicrosoftGraph/ErrorMessage';
+import Welcome from './Components/Welcome';
 import 'bootstrap/dist/css/bootstrap.css';
-import config from './Config';
+import config from './Components/MicrosoftGraph/Config';
 import { UserAgentApplication } from 'msal';
-import { getUserDetails } from './GraphService';
+import { getUserDetails } from './Components/MicrosoftGraph/GraphService';
 import RequestList from './Components/RequestList';
-import Footer from './Footer';
+import Footer from './Components/Footer/Footer';
 
 
 
@@ -95,6 +95,7 @@ async getUserProfile() {
     });
   }
 }
+
   render() {
     let error = null;
     if (this.state.error) {

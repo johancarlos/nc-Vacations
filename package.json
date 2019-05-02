@@ -1,18 +1,23 @@
 {
   "name": "nc-vacations",
   "version": "0.1.0",
-  "private": true,
+  "main": "index.js",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.7.2",
     "@microsoft/microsoft-graph-client": "^1.5.2",
+    "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
+    "date-fns": "next",
+    "express": "^4.16.4",
     "moment": "^2.24.0",
+    "mongodb": "^3.2.3",
     "msal": "^0.2.4",
+    "nodemon": "^1.18.11",
     "react": "^16.8.6",
     "react-day-picker": "^7.3.0",
-    "react-helmet": "latest",
-    "date-fns": "next",
     "react-dom": "^16.8.6",
+    "react-engine": "^4.5.1",
+    "react-helmet": "^5.2.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^3.0.0",
     "reactstrap": "^7.1.0",
@@ -23,7 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "concurrently \"nodemon server.js\" \"webpack -w\" "
   },
   "eslintConfig": {
     "extends": "react-app"

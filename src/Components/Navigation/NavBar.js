@@ -15,7 +15,7 @@ import {
   DropdownMenu,
   DropdownItem } from 'reactstrap';
 import '@fortawesome/fontawesome-free/css/all.css';
-import logo from './Images/logo.png';
+import logo from '../../Images/logo.png';
 
 function UserAvatar(props) {
   // If a user avatar is available, return an img tag with the pic

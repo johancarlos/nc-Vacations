@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import './Footer.css';
 import { Grid, Segment, Button, Image, List } from 'semantic-ui-react';
-import logoFb from './Images/logoFb.png';
-import logoTw from './Images/logoTw.png';
-import logoLn from './Images/logoLn.png';
+import logoFb from '../../Images/logoFb.png';
+import logoTw from '../../Images/logoTw.png';
+import logoLn from '../../Images/logoLn.png';
 
 class Footer extends Component {
   render() {

@@ -28,9 +28,12 @@ export default class Calendar extends React.Component {
   handleResetClick() {
     this.setState(this.getInitialState());
   }
+
   render() {
     const { from, to } = this.state;
     const modifiers = { start: from, end: to };
+    console.log(this.state);
+
     return (
       <div className="RangeCalendar">
         <p>
@@ -46,7 +49,9 @@ export default class Calendar extends React.Component {
                 Reset
               </Form.Button>
             )}
+        
         </p>
+
         <DayPicker
           className="Selectable"
           numberOfMonths={this.props.numberOfMonths}
