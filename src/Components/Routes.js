@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Container } from 'reactstrap';
-import NavBar from './Components/Navigation/NavBar';
-import ErrorMessage from './Components/MicrosoftGraph/ErrorMessage';
-import Welcome from './Components/Welcome';
+import NavBar from './Navigation/NavBar';
+import ErrorMessage from './MicrosoftGraph/ErrorMessage';
+import Welcome from './Welcome';
 import 'bootstrap/dist/css/bootstrap.css';
-import config from './Components/MicrosoftGraph/Config';
+import config from './MicrosoftGraph/Config';
 import { UserAgentApplication } from 'msal';
-import { getUserDetails } from './Components/MicrosoftGraph/GraphService';
-import RequestList from './Components/RequestList';
-import RequestForm from './Components/RequestForm';
-import Prueba from './Components/Prueba';
-
-import Footer from './Components/Footer/Footer';
+import { getUserDetails } from './MicrosoftGraph/GraphService';
+import RequestList from './RequestList';
+import RequestForm from './RequestForm';
+import Footer from './Footer/Footer';
 
 
 
-class App extends Component {
+class Routes extends Component {
   constructor(props) {
   super(props);
 
@@ -111,7 +108,6 @@ async getUserProfile() {
 isAuthenticated={this.state.isAuthenticated}
 authButtonMethod={this.state.isAuthenticated ? this.logout.bind(this) : this.login.bind(this)}
 user={this.state.user}/>
-          <Container>
             {error}
             <Route exact path="/"
               render={(props) =>
@@ -141,16 +137,6 @@ user={this.state.user}/>
                           authButtonMethod={this.login.bind(this)} />
                                       } />
 
-                                      <Route exact path="/prueba"
-                                        render={(props) =>
-                                          <Prueba {...props}
-                                          isAuthenticated={this.state.isAuthenticated}
-                                          user={this.state.user}
-                                          authButtonMethod={this.login.bind(this)} />
-                                                      } />
-
-
-          </Container>
           <Footer/>
         </div>
       </Router>
@@ -163,4 +149,4 @@ user={this.state.user}/>
   }
 }
 
-export default App;
+export default Routes;

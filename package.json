@@ -5,6 +5,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.7.2",
     "@microsoft/microsoft-graph-client": "^1.5.2",
+    "axios": "^0.18.0",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "date-fns": "next",
@@ -29,7 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently \"nodemon server.js\" \"webpack -w\" "
+    "dev": "concurrently \"nodemon server.js\" "
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,5 +40,12 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "webpack": "^4.30.0"
+  }
 }
